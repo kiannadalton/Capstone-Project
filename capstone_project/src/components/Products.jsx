@@ -18,7 +18,7 @@ function Products() {
 
       {products &&
         products.map((products) => (
-          <div>
+          <div key={products.id}>
             <p>Product Name: {products.name}</p>
             <p>Description: {products.description}</p>
             <p>Insert Average Score Here</p>
