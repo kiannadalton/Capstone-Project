@@ -52,7 +52,7 @@ function AuthForm({ setToken }) {
   return (
     <div>
       <h2>
-        {isRegister ? "Register for an Account with" : "Login to"} Krafted by
+        {isRegister ? "Register for an Account with" : "Welcome Back to"} Krafted by
         Kianna
       </h2>
       {error && <p>{error}</p>}
