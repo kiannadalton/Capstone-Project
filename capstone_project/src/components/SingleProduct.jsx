@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+// do an if statement similar to the navBar to show a version without token and with token where it shows the add comment add review
+
 function SingleProduct() {
 
   const navigate = useNavigate();
