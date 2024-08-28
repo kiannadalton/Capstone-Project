@@ -5,10 +5,14 @@ import { useState } from "react";
 //  components
 import Home from "./components/Home"
 import Products from "./components/Products";
+import SingleProduct from "./components/SingleProduct";
 import MyReviews from "./components/MyReviews";
+import ReviewForm from "./components/ReviewForm";
 import MyComments from "./components/MyComments";
+import CommentForm from "./components/CommentForm";
 import NavBar from "./components/NavBar";
 import AuthForm from "./components/AuthForm";
+
 
 function App() {
   const [token, setToken] = useState(null);
@@ -18,10 +22,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/items" element={<Products />} />
+        <Route path="/items/:itemId" element={<SingleProduct />} />
+
         <Route path="/login" element={<AuthForm setToken={setToken} />} />
         <Route path="/register" element={<AuthForm setToken={setToken} />} />
         <Route path="/reviews" element={<MyReviews token={token} />} />
         <Route path="/comments" element={<MyComments token={token} />} />
+        <Route
+          path="/comments/:reviewId"
+          element={<CommentForm token={token} />}
+        />
+        <Route path="/reviews/:itemId" element={<ReviewForm token={token} />} />
       </Routes>
     </div>
   );

@@ -4,6 +4,8 @@ function MyReviews({token}) {
 
   const { data, isLoading, error } = useGetMyReviewsQuery(token);
 
+  console.log(data);
+
   return (
     <div>
       <h2>My Reviews</h2>

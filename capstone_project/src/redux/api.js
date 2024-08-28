@@ -32,8 +32,8 @@ export const capstone_api = createApi({
       }),
     }),
     getMyComments: builder.query({
-      query: (token) => ({
-        url: "api/comments",
+      query: ({token, id}) => ({
+        url: `api/comments/${id}`,
         headers: {
           authorization: `Bearer ${token}`,
         },
