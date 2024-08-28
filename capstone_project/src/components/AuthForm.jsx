@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "../redux/api";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function AuthForm({ setToken }) {
   const initialForm = {
@@ -16,6 +16,8 @@ function AuthForm({ setToken }) {
   const [register] = useRegisterMutation();
   const [login] = useLoginMutation();
   const location = useLocation();
+  const navigate = useNavigate();
+
   const isRegister = location.pathname === "/register";
 
   const { username, password } = form;
@@ -44,6 +46,7 @@ function AuthForm({ setToken }) {
       return;
     }
     setToken(data.token);
+    navigate("/items")
   };
 
   return (

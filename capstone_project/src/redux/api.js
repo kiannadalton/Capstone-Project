@@ -7,20 +7,39 @@ export const capstone_api = createApi({
   }),
   endpoints: (builder) => ({
     register: builder.mutation({
-        query: (body) => ({
-            url: '/api/auth/register',
-            method: "POST",
-            body,
-        }),
+      query: (body) => ({
+        url: "/api/auth/register",
+        method: "POST",
+        body,
+      }),
     }),
     login: builder.mutation({
-        query: (body) => ({
-            url: '/api/auth/login',
-            method: "POST",
-            body,
-        }),
-    }),      
-    })
+      query: (body) => ({
+        url: "/api/auth/login",
+        method: "POST",
+        body,
+      }),
+    }),
+    getProducts: builder.query({
+      query: () => "/api/items",
+    }),
+    getMyReviews: builder.query({
+      query: (token) => ({
+        url: "api/reviews",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
+    getMyComments: builder.query({
+      query: (token) => ({
+        url: "api/comments",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
+  }),
 });
 
-export const { useRegisterMutation, useLoginMutation} = capstone_api;
+export const { useRegisterMutation, useLoginMutation, useGetProductsQuery, useGetMyReviewsQuery, useGetMyCommentsQuery} = capstone_api;
