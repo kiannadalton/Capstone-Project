@@ -4,10 +4,9 @@ import { useState } from "react";
 
 //  components
 import Home from "./components/Home"
-import Login from "./components/Login";
 import Products from "./components/Products";
-import Register from "./components/Register";
 import NavBar from "./components/NavBar";
+import AuthForm from "./components/AuthForm";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -16,10 +15,10 @@ function App() {
     <div>
       <NavBar token={token}/>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="products" element={<Products />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register setToken={setToken}/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/login" element={<AuthForm setToken={setToken}/>} />
+        <Route path="/register" element={<AuthForm setToken={setToken}/>} />
       </Routes>
     </div>
   );

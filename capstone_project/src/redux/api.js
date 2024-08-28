@@ -12,8 +12,15 @@ export const capstone_api = createApi({
             method: "POST",
             body,
         }),
+    }),
+    login: builder.mutation({
+        query: (body) => ({
+            url: '/api/auth/login',
+            method: "POST",
+            body,
+        }),
+    }),      
     })
-  })
 });
 
-export const { useRegisterMutation} = capstone_api;
+export const { useRegisterMutation, useLoginMutation} = capstone_api;
