@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {
+  useCreateCommentMutation } from '../redux/api';
 
 function CommentForm({ token }) {
   const initialForm = {
@@ -7,6 +9,7 @@ function CommentForm({ token }) {
 
   const [form, updateForm] = useState(initialForm);
   const [error, setError] = useState(null);
+  const [createComment] = useCreateCommentMutation();
 
   const { comment } = form;
 
@@ -15,13 +18,21 @@ function CommentForm({ token }) {
     updateForm({ ...form, [target.name]: target.value });
   };
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
       evt.preventDefault();
 
       if (comment === "") {
         setError("Please fill out entire Comment Form.");
         return;
       }
+
+      const {data, error} = await createComment({token, body: form});
+
+      if (error) {
+        setError("Something went wrong. Please try again!");
+        return;
+      }
+      
     };
 
   return (

@@ -4,7 +4,6 @@ function Home() {
   return (
     <section>
       <h1>Krafted by Kianna</h1>
-      <h2>Home</h2>
       <img src={homepage_img}/>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

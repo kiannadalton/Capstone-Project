@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useCreateReviewMutation } from "../redux/api";
 
 function ReviewForm({ token }) {
   const initialForm = {
@@ -8,6 +9,7 @@ function ReviewForm({ token }) {
 
   const [form, updateForm] = useState(initialForm);
   const [error, setError] = useState(null);
+  const [createReview] = useCreateReviewMutation();
 
   const { score, txt } = form;
 
@@ -15,12 +17,27 @@ function ReviewForm({ token }) {
     updateForm({ ...form, [target.name]: target.value });
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
 
     if(score === "" || txt === ""){
         setError('Please fill out entire Review Form.')
         return;
+    }
+
+    const {data, error} = await createReview({
+      token, 
+      body: form,
+    });
+
+    console.log(data);
+    console.log(token);
+    // coming up as undefined. backend says itemId is missing?
+    console.log(body);
+
+    if(error) {
+      setError("Something went wrong. Please try again!");
+      return;
     }
   }
 

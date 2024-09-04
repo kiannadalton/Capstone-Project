@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 // do an if statement similar to the navBar to show a version without token and with token where it shows the add comment add review
 
 function SingleProduct() {
 
+  const { itemId } = useParams();
   const navigate = useNavigate();
 
   return (
@@ -15,10 +16,10 @@ function SingleProduct() {
         The below buttons are placeholders for when a Single Product page is
         displayed.
       </p>
-      <button onClick={() => navigate("/reviews/:itemId")}>
+      <button onClick={() => navigate("/reviews/")}>
         Write a Review
       </button>
-      <button onClick={() => navigate("/comments/:reviewId")}>
+      <button onClick={() => navigate("/comments/")}>
         Add Comment
       </button>
     </div>
