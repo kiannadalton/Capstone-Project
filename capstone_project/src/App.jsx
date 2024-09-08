@@ -20,17 +20,18 @@ function App() {
       <NavBar token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/items" element={<Products />} />
-        <Route path="/items/:itemId" element={<SingleProduct />} />
+        <Route path="/items" element={<Products token={token} />} />
+        {/* look into, current have it as just /items */}
+        <Route path="/items/:itemId" element={<SingleProduct token={token}/>} />
 
         <Route path="/login" element={<AuthForm setToken={setToken} />} />
         <Route path="/register" element={<AuthForm setToken={setToken} />} />
-        <Route path="/reviews/" element={<MyReviews token={token} />} />
-        <Route path="/comments/" element={<MyComments token={token} />} />
+        <Route path="/reviews/myreviews" element={<MyReviews token={token} />} />
+        <Route path="/comments/mycomments" element={<MyComments token={token} />} />
 
-        {/* ask Jessica why it needs the reviewId and itemId to populate pages */}
-        <Route path="/comments/" element={<CommentForm token={token} />} />
-        <Route path="/reviews/" element={<ReviewForm token={token} />} />
+
+        <Route path="/comments/commentform" element={<CommentForm token={token} />} />
+        <Route path="/items/:item_id/review" element={<ReviewForm token={token} />} />
       </Routes>
     </div>
   );

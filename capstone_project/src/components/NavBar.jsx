@@ -13,8 +13,8 @@ function NavBar({ token, setToken }) {
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/items">Products</NavLink>
-        <NavLink to="/reviews">My Reviews</NavLink>
-        <NavLink to="/comments">My Comments</NavLink>
+        <NavLink to="/reviews/myreviews">My Reviews</NavLink>
+        <NavLink to="/comments/mycomments">My Comments</NavLink>
         <a onClick={logoutUser}>Logout</a>
       </nav>
     );

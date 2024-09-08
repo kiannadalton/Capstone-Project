@@ -2,13 +2,15 @@ import { useGetProductsQuery } from "../redux/api";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { useState, useEffect } from "react";
-
+// import SingleProduct from "./SingleProduct";
 
 function Products() {
 
   const { data, isLoading, error, refetch } = useGetProductsQuery();
-  const navigate = useNavigate();
+  const [productSelected, setProductSelected] = useState(null);
+  // const navigate = useNavigate();
   const [searchParameter, setSearchParameter] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     refetch();
@@ -17,7 +19,7 @@ function Products() {
   let message;
 
   if (isLoading) {
-    return (message = "Our little virtual Elves are fetching your products!");
+    return (message = "Tiny virtual moths are fetching your products!");
   }
 
   // Show an error message if the fetch failed
@@ -27,6 +29,9 @@ function Products() {
   }
   // const products = data?.allItems;
 
+  // if (productSelected){
+  //   return <SingleProduct products={productSelected}/>;
+  // }
 
 
     const productsToDisplay =
@@ -38,13 +43,6 @@ function Products() {
               .includes(searchParameter.toLowerCase());
           })
         : data?.allItems;
-
-
-
-
-
-
-
 
   return (
     <div>
@@ -64,10 +62,10 @@ function Products() {
           productsToDisplay.map((products) => (
             <div className="product_card" key={products.id}>
               <p>Product Name: {products.name}</p>
-              <p>Description: {products.description}</p>
               <p>Insert Average Score Here</p>
-              <button onClick={() => navigate("/items/:itemId")}>
-                See Details placeholder
+
+              <button onClick={() => navigate(`/items/${products.id}`)}>
+                See Details
               </button>
             </div>
           ))}

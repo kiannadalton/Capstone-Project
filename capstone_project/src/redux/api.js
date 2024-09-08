@@ -24,18 +24,23 @@ export const capstone_api = createApi({
     getProducts: builder.query({
       query: () => "/api/items",
     }),
+    getSingleProduct: builder.query({
+      query: (id) => ({
+        url: `api/items/${id}`,
+      }),
+    }),
     getMyReviews: builder.query({
       query: (token) => ({
-        url: "api/reviews/",
+        url: "api/reviews/myreviews",
         headers: {
           authorization: `Bearer ${token}`,
         },
       }),
-      providesTags: ["reviews"],
+      providesTags: ["reviews, items"],
     }),
     getMyComments: builder.query({
-      query: ( token ) => ({
-        url: "api/comments/",
+      query: (token) => ({
+        url: "api/comments/mycomments",
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -43,26 +48,71 @@ export const capstone_api = createApi({
       providesTags: ["comment"],
     }),
     createReview: builder.mutation({
-      query: ({ token, body }) => ({
-        url: "api/reviews/",
+      query: ({ item_id, token, txt, score }) => ({
+        url: `api/items/${item_id}/review`,
         method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body: {
+          txt: txt,
+          score: score,
+        },
+      }),
+      invalidatesTags: ["reviews, items"],
+    }),
+    updateReview: builder.mutation({
+      query: ({ id, token, body }) => ({
+        url: `api/reviews/${id}`,
+        method: "PUT",
         headers: {
           authorization: `Bearer ${token}`,
         },
         body,
       }),
-      invalidatesTags: ["reviews"],
+      invalidatesTags: ["items, reviews, review"],
+    }),
+    deleteReview: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `api/reviews/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+      invalidatesTags: ["items, reviews, reivew"],
     }),
     createComment: builder.mutation({
       query: ({ token, body }) => ({
-        url: "api/comments/",
+        url: "api/comments/commentform",
         method: "POST",
         headers: {
           authorization: `Bearer ${token}`,
         },
         body,
       }),
-      invalidatesTags: ["comment"],
+      invalidatesTags: ["comments, reivew"],
+    }),
+    updateComment: builder.mutation({
+      query: ({ id, token, body }) => ({
+        url: `api/comments/${id}`,
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+        body,
+      }),
+      invalidatesTags: ["comments, reivew"],
+    }),
+    deleteComment: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `api/comments/${id}`,
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }),
+      invalidatesTags: ["comments, reivew"],
     }),
   }),
 });
@@ -71,8 +121,13 @@ export const {
   useRegisterMutation,
   useLoginMutation,
   useGetProductsQuery,
+  useGetSingleProductQuery,
   useGetMyReviewsQuery,
   useGetMyCommentsQuery,
+  useUpdateReviewMutation,
+  useUpdateCommentMutation,
+  useDeleteReviewMutation,
+  useDeleteCommentMutation,
   useCreateReviewMutation,
   useCreateCommentMutation,
 } = capstone_api;

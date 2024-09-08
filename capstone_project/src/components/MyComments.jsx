@@ -1,11 +1,18 @@
-import { useGetMyCommentsQuery } from "../redux/api";
+import { useGetMyCommentsQuery, useDeleteCommentMutation } from "../redux/api";
+
 
 function MyComments({token}) {
 
-      const { data, isLoading, error } = useGetMyCommentsQuery(token);
-      const comments = data?.comments;
+  const { data, isLoading, error, refetch } = useGetMyCommentsQuery(token);
+  const comments = data?.comments;
+  const [deleteComment] = useDeleteCommentMutation();
 
+  const removeComment = async (id) => {
+    await deleteComment({ id, token });
 
+    // refetched page without fully reloading
+    refetch();
+  };
 
   return (
     <div>
@@ -16,10 +23,12 @@ function MyComments({token}) {
       <div className="allGroups">
         {comments &&
           comments.map((comment) => (
-            <div className="comment_card">
+            <div className="comment_card" key={comment.id}>
               <p>Posted Comment: {comment.comment}</p>
               <button>Edit</button>
-              <button>Delete</button>
+              <button
+              onClick={() => {removeComment(comment.id)}}
+              >Delete</button>
             </div>
           ))}
       </div>

@@ -1,45 +1,50 @@
 import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useCreateReviewMutation } from "../redux/api";
+import StarRating from "./StarRating";
 
 function ReviewForm({ token }) {
+  const { item_id } = useParams();
+
   const initialForm = {
-    score: "",
+    // score: "",
     txt: "",
   };
 
   const [form, updateForm] = useState(initialForm);
+  const [score, setScore] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const [createReview] = useCreateReviewMutation();
-
-  const { score, txt } = form;
 
   const handleChange = ({ target }) => {
     updateForm({ ...form, [target.name]: target.value });
   };
 
+  const { txt } = form;
+
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
-    if(score === "" || txt === ""){
-        setError('Please fill out entire Review Form.')
-        return;
+    if (score === null || txt === "") {
+      setError("Please fill out entire Review Form.");
+      return;
     }
 
-    const {data, error} = await createReview({
-      token, 
-      body: form,
+    const { data = {}, error } = await createReview({
+      item_id,
+      token,
+      txt,
+      score,
     });
 
-    console.log(data);
-    console.log(token);
-    // coming up as undefined. backend says itemId is missing?
-    console.log(body);
+    navigate(`/items/${item_id}`);
 
-    if(error) {
+    if (error) {
       setError("Something went wrong. Please try again!");
       return;
     }
-  }
+  };
 
   return (
     <div>
@@ -48,7 +53,13 @@ function ReviewForm({ token }) {
       <form>
         <label>
           Overall Rating:
-          <input name="score" value={score} onChange={handleChange} />
+          {/* <input
+            name="score"
+            type="float"
+            value={score}
+            onChange={handleChange}
+          /> */}
+          <StarRating setScore={setScore} />
         </label>
 
         <label>

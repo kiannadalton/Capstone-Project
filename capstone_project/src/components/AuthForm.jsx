@@ -46,36 +46,49 @@ function AuthForm({ setToken }) {
       return;
     }
     setToken(data.token);
-    navigate("/items")
+    navigate("/items");
   };
 
   return (
     <div>
       <h2>
-        {isRegister ? "Register for an Account with" : "Welcome Back to"} Krafted by
-        Kianna
+        {isRegister ? "Register for an Account with" : "Welcome Back to"} Lunar
+        Looms
       </h2>
-      {error && <p>{error}</p>}
-      <form>
-        <label>
-          Username:
-          <input name="username" value={username} onChange={handleChange} />
-        </label>
 
-        <label>
-          Password:
-          <input
-            type={!showPassword ? "password" : "text"}
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-        <button onClick={handleSubmit}>{isRegister ? 'Register' : 'Login'}</button>
-      </form>
-      <button onClick={() => setShowPassword(!showPassword)}>
-        Show Password
-      </button>
+      {error && <p>{error}</p>}
+
+      <div className="authGroups">
+        <div className="auth_card">
+          <form>
+            <label>
+              Username:
+              <input name="username" value={username} onChange={handleChange} />
+            </label>
+
+            <label>
+              Password:
+              <input
+                type={!showPassword ? "password" : "text"}
+                name="password"
+                value={password}
+                onChange={handleChange}
+              />
+            </label>
+            <button onClick={handleSubmit}>
+              {isRegister ? "Register" : "Login"}
+            </button>
+
+            {/* button defaults as a 'submit type' when put within a form, so need to type as 'button' type to prevent resubmitting page */}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              Show Password
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

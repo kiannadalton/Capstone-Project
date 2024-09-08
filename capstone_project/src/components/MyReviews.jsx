@@ -1,12 +1,18 @@
-import { useGetMyReviewsQuery } from "../redux/api";
+import { useGetMyReviewsQuery, useDeleteReviewMutation } from "../redux/api";
 
 function MyReviews({token}) {
 
-  const { data, isLoading, error } = useGetMyReviewsQuery(token);
-
+  const { data, isLoading, error, refetch } = useGetMyReviewsQuery(token);
   const reviews = data?.review;
 
-  console.log(data);
+  const [deleteReview] = useDeleteReviewMutation();
+
+  const removeReview = async (id) => {
+    await deleteReview({ id, token });
+
+    // refetched page without fully reloading
+    refetch();
+  };
 
   return (
     <div>
@@ -18,11 +24,13 @@ function MyReviews({token}) {
       <div className="allGroups">
         {reviews &&
           reviews.map((review) => (
-            <div className="review_card">
+            <div className="review_card" key={review.id}>
               <p>Score: {review.score}</p>
               <p>Review: {review.txt}</p>
               <button>Edit</button>
-              <button>Delete</button>
+              <button
+              onClick={() => {removeReview(review.id)}}
+              >Delete</button>
             </div>
           ))}
       </div>
