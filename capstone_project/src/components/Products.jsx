@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 // import SingleProduct from "./SingleProduct";
 
 function Products() {
-
   const { data, isLoading, error, refetch } = useGetProductsQuery();
   const [productSelected, setProductSelected] = useState(null);
   // const navigate = useNavigate();
@@ -15,6 +14,7 @@ function Products() {
   useEffect(() => {
     refetch();
   }, []);
+
 
   let message;
 
@@ -33,16 +33,15 @@ function Products() {
   //   return <SingleProduct products={productSelected}/>;
   // }
 
-
-    const productsToDisplay =
-      searchParameter && data
-        ? data?.allItems.filter((product) => {
-            // parameter.keyWeWant.toLowerCase searches for the name in any case. Make sure to toLowerCase the searchParameter, as well.
-            return product.name
-              .toLowerCase()
-              .includes(searchParameter.toLowerCase());
-          })
-        : data?.allItems;
+  const productsToDisplay =
+    searchParameter && data
+      ? data?.allItems.filter((product) => {
+          // parameter.keyWeWant.toLowerCase searches for the name in any case. Make sure to toLowerCase the searchParameter, as well.
+          return product.name
+            .toLowerCase()
+            .includes(searchParameter.toLowerCase());
+        })
+      : data?.allItems;
 
   return (
     <div>
@@ -62,7 +61,7 @@ function Products() {
           productsToDisplay.map((products) => (
             <div className="product_card" key={products.id}>
               <p>Product Name: {products.name}</p>
-              <p>Insert Average Score Here</p>
+              <p>Average Rating: </p>
 
               <button onClick={() => navigate(`/items/${products.id}`)}>
                 See Details

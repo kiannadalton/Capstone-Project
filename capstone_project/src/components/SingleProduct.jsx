@@ -21,8 +21,15 @@ function SingleProduct({ token }) {
   useEffect(() => {
     refetch();
   }, []);
-  
+
   const product = data.itemId;
+  const allReviews = product?.reviews
+
+  // adds average rating
+  let average =
+    allReviews?.reduce((total, review) => {
+      return total + review.score;
+    }, 0) / allReviews?.length;
 
   let message;
 
@@ -46,7 +53,7 @@ function SingleProduct({ token }) {
       <div className="allGroups">
         <div className="single_product_card">
           <h3> {product.name} </h3>
-          <p>Average Rating: </p>
+          <p>Average Rating: {average} </p>
           <p>{product.description}</p>
           {/* <button onClick={() => navigate("/reviews/reviewform")}>
           Write a Review
@@ -76,7 +83,7 @@ function SingleProduct({ token }) {
                 <div>
                   {review.comments &&
                     review.comments.map((comment) => (
-                      <div className="sp_review_card" key={comment.id}>
+                      <div className="sp_review_card_comments" key={comment.id}>
                         <p>Comment: {comment.comment}</p>
                       </div>
                     ))}
@@ -94,7 +101,7 @@ function SingleProduct({ token }) {
     <div className="allGroups">
       <div className="single_product_card">
         <h3> {product.name} </h3>
-        <p>Average Rating: </p>
+        <p>Average Rating: {average.toFixed(1)} Stars</p>
         <p>{product.description}</p>
       </div>
 
@@ -113,7 +120,7 @@ function SingleProduct({ token }) {
               <div>
                 {review.comments &&
                   review.comments.map((comment) => (
-                    <div className="sp_review_card" key={comment.id}>
+                    <div className="sp_review_card_comments" key={comment.id}>
                       <p>Comment: {comment.comment}</p>
                     </div>
                   ))}
