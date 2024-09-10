@@ -23,7 +23,7 @@ function SingleProduct({ token }) {
   }, []);
 
   const product = data.itemId;
-  const allReviews = product?.reviews
+  const allReviews = product?.reviews;
 
   // adds average rating
   let average =
@@ -53,7 +53,7 @@ function SingleProduct({ token }) {
       <div className="allGroups">
         <div className="single_product_card">
           <h3> {product.name} </h3>
-          <p>Average Rating: {average} </p>
+          <p>Average Rating: {average.toFixed(1)} </p>
           <p>{product.description}</p>
           {/* <button onClick={() => navigate("/reviews/reviewform")}>
           Write a Review
