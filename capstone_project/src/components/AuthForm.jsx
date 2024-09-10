@@ -30,7 +30,6 @@ function AuthForm({ setToken }) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(form);
 
     if (form.username === "" || form.password === "") {
       setError("Please provide a username and password.");

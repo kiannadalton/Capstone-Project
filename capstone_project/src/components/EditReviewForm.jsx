@@ -1,22 +1,27 @@
-// works
 
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useCreateReviewMutation } from "../redux/api";
+import { useUpdateReviewMutation } from "../redux/api";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import StarRating from "./StarRating";
 
-function ReviewForm({ token }) {
-  const { item_id } = useParams();
+function EditReviewForm({ token }) {
+  const { id } = useParams();
+
+  const location = useLocation();
+
+//   imports info from selected edit review on My Reviews page
+  const editingReview = location.state.review;
 
   const initialForm = {
-    txt: "",
+    txt: editingReview?.txt,
+    score: editingReview?.score
   };
 
   const [form, updateForm] = useState(initialForm);
   const [score, setScore] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [createReview] = useCreateReviewMutation();
+  const [updateReview] = useUpdateReviewMutation();
 
   const handleChange = ({ target }) => {
     updateForm({ ...form, [target.name]: target.value });
@@ -32,14 +37,14 @@ function ReviewForm({ token }) {
       return;
     }
 
-    const { data = {}, error } = await createReview({
-      item_id,
+    const { data = {}, error } = await updateReview({
+      id,
       token,
       txt,
       score,
     });
 
-    navigate(`/items/${item_id}`);
+    navigate("/reviews/myreviews");
 
     if (error) {
       setError("Something went wrong. Please try again!");
@@ -49,23 +54,24 @@ function ReviewForm({ token }) {
 
   return (
     <div>
-      <h2>Write a Review</h2>
+      <h2>Edit Your Review</h2>
       {error && <p>{error}</p>}
       <form>
         <label>
           Overall Rating:
           <StarRating setScore={setScore} />
         </label>
-
+        <p>Your original rating was: <br></br>
+            {editingReview.score} / 5</p>
         <label>
-          Add a Written Review:
+          Edit Written Review:
           <input name="txt" value={txt} onChange={handleChange} />
         </label>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>Update Review</button>
       </form>
     </div>
   );
 }
 
-export default ReviewForm;
+export default EditReviewForm;

@@ -1,39 +1,48 @@
+// works
+
 import { useState } from "react";
-import {
-  useCreateCommentMutation } from '../redux/api';
+import { useCreateCommentMutation } from "../redux/api";
+import {  useParams, useNavigate } from "react-router-dom";
 
 function CommentForm({ token }) {
+  const { review_id } = useParams();
   const initialForm = {
-    comment: "",
+    comment: ""
   };
 
   const [form, updateForm] = useState(initialForm);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const [createComment] = useCreateCommentMutation();
 
   const { comment } = form;
 
   const handleChange = ({ target }) => {
-
-    updateForm({ ...form, [target.name]: target.value });
+    updateForm({ ...form, [target.name]: target.value })
   };
 
-    const handleSubmit = async (evt) => {
-      evt.preventDefault();
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
 
-      if (comment === "") {
-        setError("Please fill out entire Comment Form.");
-        return;
-      }
+    if (comment === "") {
+      setError("Please fill out entire Comment Form.");
+      return;
+    }
 
-      const {data, error} = await createComment({token, body: form});
+    const { data, error } = await createComment({
+      review_id,
+      token,
+      body: form,
+    })
+    ;
 
-      if (error) {
-        setError("Something went wrong. Please try again!");
-        return;
-      }
-      
-    };
+    if (error) {
+      setError("Something went wrong. Please try again!");
+      return;
+    }
+
+    navigate("/items")
+  };
 
   return (
     <div>

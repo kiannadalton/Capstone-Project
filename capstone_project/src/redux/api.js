@@ -62,13 +62,16 @@ export const capstone_api = createApi({
       invalidatesTags: ["reviews, items"],
     }),
     updateReview: builder.mutation({
-      query: ({ id, token, body }) => ({
+      query: ({ id, token, txt, score }) => ({
         url: `api/reviews/${id}`,
         method: "PUT",
         headers: {
           authorization: `Bearer ${token}`,
         },
-        body,
+        body: {
+          txt: txt,
+          score: score,
+        },
       }),
       invalidatesTags: ["items, reviews, review"],
     }),
@@ -80,18 +83,18 @@ export const capstone_api = createApi({
           authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: ["items, reviews, reivew"],
+      invalidatesTags: ["items, reviews, review"],
     }),
     createComment: builder.mutation({
-      query: ({ token, body }) => ({
-        url: "api/comments/commentform",
+      query: ({ review_id, token, body }) => ({
+        url: `api/comments/review/${review_id}`,
         method: "POST",
         headers: {
           authorization: `Bearer ${token}`,
         },
         body,
       }),
-      invalidatesTags: ["comments, reivew"],
+      invalidatesTags: ["comments, review"],
     }),
     updateComment: builder.mutation({
       query: ({ id, token, body }) => ({
@@ -102,7 +105,7 @@ export const capstone_api = createApi({
         },
         body,
       }),
-      invalidatesTags: ["comments, reivew"],
+      invalidatesTags: ["comments, review"],
     }),
     deleteComment: builder.mutation({
       query: ({ id, token }) => ({
@@ -112,7 +115,7 @@ export const capstone_api = createApi({
           authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: ["comments, reivew"],
+      invalidatesTags: ["comments, review"],
     }),
   }),
 });

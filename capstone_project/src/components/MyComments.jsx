@@ -1,18 +1,23 @@
 import { useGetMyCommentsQuery, useDeleteCommentMutation } from "../redux/api";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-
-function MyComments({token}) {
-
+function MyComments({ token }) {
   const { data, isLoading, error, refetch } = useGetMyCommentsQuery(token);
   const comments = data?.comments;
   const [deleteComment] = useDeleteCommentMutation();
+  const navigate = useNavigate();
 
   const removeComment = async (id) => {
     await deleteComment({ id, token });
 
-    // refetched page without fully reloading
     refetch();
   };
+
+  // helps refresh the page after editing or adding a comment
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <div>
@@ -25,10 +30,20 @@ function MyComments({token}) {
           comments.map((comment) => (
             <div className="comment_card" key={comment.id}>
               <p>Posted Comment: {comment.comment}</p>
-              <button>Edit</button>
               <button
-              onClick={() => {removeComment(comment.id)}}
-              >Delete</button>
+                onClick={() =>
+                  navigate(`/comments/${comment.id}`, { state: { comment } })
+                }
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => {
+                  removeComment(comment.id);
+                }}
+              >
+                Delete
+              </button>
             </div>
           ))}
       </div>
