@@ -71,7 +71,7 @@ function SingleProduct({ token }) {
           {product.reviews &&
             product.reviews.map((review) => (
               <div className="sp_review_card" key={review.id}>
-                <p>Score: {review.score}</p>
+                <p>Score: {review.score.toFixed(1)}</p>
                 <p>Review: {review.txt}</p>
                 <button
                   onClick={() => navigate(`/comments/review/${review.id}`)}
@@ -113,7 +113,7 @@ function SingleProduct({ token }) {
         {product.reviews &&
           product.reviews.map((review) => (
             <div className="sp_review_card" key={review.id}>
-              <p>Score: {review.score}</p>
+              <p>Score: {review.score.toFixed(1)}</p>
               <p>Review: {review.txt}</p>
               {/* adding comments to reviews */}
               <h3>Comments:</h3>
