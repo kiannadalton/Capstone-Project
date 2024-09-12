@@ -27,11 +27,6 @@ function Products() {
     console.log(error);
     return (message = "Something went wrong! Please try again.");
   }
-  // const products = data?.allItems;
-
-  // if (productSelected){
-  //   return <SingleProduct products={productSelected}/>;
-  // }
 
   const productsToDisplay =
     searchParameter && data
@@ -61,7 +56,11 @@ function Products() {
           productsToDisplay.map((products) => (
             <div className="product_card" key={products.id}>
               <p>Product Name: {products.name}</p>
-              <p>Average Rating: </p>
+              <p>
+                {(products.reviews?.reduce((total, review) => {
+                  return total + review.score;
+                }, 0) / products.reviews?.length).toFixed(1)} Stars
+              </p>
 
               <button onClick={() => navigate(`/items/${products.id}`)}>
                 See Details
