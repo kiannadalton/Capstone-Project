@@ -51,8 +51,8 @@ function AuthForm({ setToken }) {
   return (
     <div>
       <h2>
-        {isRegister ? "Register for an Account with" : "Welcome Back to"} Lunar
-        Looms
+        {isRegister ? "Register for an Account with" : "Welcome Back to"} The
+        Cozy Cat Collective
       </h2>
 
       {error && <p>{error}</p>}
@@ -60,12 +60,12 @@ function AuthForm({ setToken }) {
       <div className="authGroups">
         <div className="auth_card">
           <form>
-            <label>
+            <label className="auth_card__label">
               Username:
               <input name="username" value={username} onChange={handleChange} />
             </label>
 
-            <label>
+            <label className="auth_card__label">
               Password:
               <input
                 type={!showPassword ? "password" : "text"}

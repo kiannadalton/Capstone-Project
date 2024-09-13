@@ -15,7 +15,6 @@ function Products() {
     refetch();
   }, []);
 
-
   let message;
 
   if (isLoading) {
@@ -40,7 +39,7 @@ function Products() {
 
   return (
     <div>
-      <h2>Products</h2>
+      <h2>Find Your Purrfect Partner!</h2>
 
       <div>
         <SearchBar
@@ -55,12 +54,17 @@ function Products() {
         {productsToDisplay &&
           productsToDisplay.map((products) => (
             <div className="product_card" key={products.id}>
-              <p>Product Name: {products.name}</p>
+              <img src={products.img_url} alt={products.name} />
+              <p>Name: {products.name}</p>
               <p>
-                {(products.reviews?.reduce((total, review) => {
-                  return total + review.score;
-                }, 0) / products.reviews?.length).toFixed(1)} Stars
+                {(
+                  products.reviews?.reduce((total, review) => {
+                    return total + review.score;
+                  }, 0) / products.reviews?.length
+                ).toFixed(1)}{" "}
+                Stars
               </p>
+              {console.log("product", products)}
 
               <button onClick={() => navigate(`/items/${products.id}`)}>
                 See Details

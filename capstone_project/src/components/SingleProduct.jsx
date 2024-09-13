@@ -52,7 +52,7 @@ function SingleProduct({ token }) {
     return (
       <div className="allGroups">
         <div className="single_product_card">
-          <h3> {product.name} </h3>
+          <h3> Meet {product.name}! </h3>
           <p>Average Rating: {average.toFixed(1)} </p>
           <p>{product.description}</p>
           {/* <button onClick={() => navigate("/reviews/reviewform")}>
@@ -71,7 +71,7 @@ function SingleProduct({ token }) {
           {product.reviews &&
             product.reviews.map((review) => (
               <div className="sp_review_card" key={review.id}>
-                <p>Score: {review.score.toFixed(1)}</p>
+                <p>Rating: {review.score.toFixed(1)} Stars</p>
                 <p>Review: {review.txt}</p>
                 <button
                   onClick={() => navigate(`/comments/review/${review.id}`)}
@@ -84,7 +84,8 @@ function SingleProduct({ token }) {
                   {review.comments &&
                     review.comments.map((comment) => (
                       <div className="sp_review_card_comments" key={comment.id}>
-                        <p>Comment: {comment.comment}</p>
+                        <p>Comment:</p>
+                        <p>{comment.comment}</p>
                       </div>
                     ))}
                 </div>
@@ -100,9 +101,13 @@ function SingleProduct({ token }) {
   return (
     <div className="allGroups">
       <div className="single_product_card">
-        <h3> {product.name} </h3>
+        <h3> Meet {product.name}!</h3>
+        <img src={product.img_url} alt={product.name} />
         <p>Average Rating: {average.toFixed(1)} Stars</p>
         <p>{product.description}</p>
+        <button onClick={() => navigate("/login")}>
+          Log In to Write a Review
+        </button>
       </div>
 
       <div className="sp_review_card">
@@ -113,7 +118,7 @@ function SingleProduct({ token }) {
         {product.reviews &&
           product.reviews.map((review) => (
             <div className="sp_review_card" key={review.id}>
-              <p>Score: {review.score.toFixed(1)}</p>
+              <p>Rating: {review.score.toFixed(1)} Stars</p>
               <p>Review: {review.txt}</p>
               {/* adding comments to reviews */}
               <h3>Comments:</h3>
@@ -121,7 +126,8 @@ function SingleProduct({ token }) {
                 {review.comments &&
                   review.comments.map((comment) => (
                     <div className="sp_review_card_comments" key={comment.id}>
-                      <p>Comment: {comment.comment}</p>
+                      <p>Comment:</p>
+                      <p>{comment.comment}</p>
                     </div>
                   ))}
               </div>

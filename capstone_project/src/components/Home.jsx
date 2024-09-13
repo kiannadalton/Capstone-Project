@@ -1,24 +1,20 @@
-import homepage_img from '../img/homepage.jpg';
+import homepage_img from '../img/homepagecat.jpg';
 
 function Home() {
   return (
     <section>
-      <h1>Lunar Looms</h1>
+      <h1>The Cozy Cat Collective</h1>
       <img src={homepage_img} />
       <p className="homepage">
-        Welcome to our world of exquisite needlework, where every stitch is
-        inspired by the delicate beauty of moths and their intricate patterns.
-        Our collection features handmade creations that blend traditional
-        techniques with designs drawn from the natural elegance of these gentle
-        creatures, offering you one-of-a-kind pieces that are both captivating
-        and unique. From elegant embroidery to intricate lacework, each item
-        reflects the artistry and care that goes into our work, as well as the
-        enchanting inspiration behind it. We invite you to explore our gallery
-        and discover something special that captures the grace and mystery of
-        nature. Whether you're seeking a thoughtful gift or a statement piece
-        for your home, our creations bring warmth and wonder to any space. Thank
-        you for supporting the art of handcrafting and celebrating the beauty of
-        the natural world with us.
+        Welcome to The Cozy Cat Collective, where you can rent a friendly, affectionate
+        cat for moments of joy, relaxation, and pure cuddles. Our cats are
+        specially trained to provide comfort, whether you're looking to brighten
+        your day or soothe your mind with some furry companionship. Ideal for
+        relieving stress, boosting mental health, or simply adding fun to your
+        day, each of our cats is ready to offer endless purrs and snuggles. You
+        can book one for a quiet evening, a playful afternoon, or as a calming
+        companion during challenging times. Let our whiskered friends bring
+        warmth, happiness, and peace into your life!
       </p>
     </section>
   );

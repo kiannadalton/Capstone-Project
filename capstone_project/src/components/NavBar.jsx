@@ -12,7 +12,7 @@ function NavBar({ token, setToken }) {
     return (
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/items">Products</NavLink>
+        <NavLink to="/items">Available Cats</NavLink>
         <NavLink to="/reviews/myreviews">My Reviews</NavLink>
         <NavLink to="/comments/mycomments">My Comments</NavLink>
         <a onClick={logoutUser}>Logout</a>
@@ -23,7 +23,7 @@ function NavBar({ token, setToken }) {
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/items">Products</NavLink>
+      <NavLink to="/items">Available Cats</NavLink>
       <NavLink to="/register">Register</NavLink>
       <NavLink to="/login">Login</NavLink>
     </nav>

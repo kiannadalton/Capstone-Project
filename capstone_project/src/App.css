@@ -29,7 +29,7 @@ nav > a:hover {
 }
 
 img {
-  width: 60%;
+  width: 40%;
 }
 
 .homepage {
@@ -39,7 +39,7 @@ img {
 }
 
 .searchBar {
-  background-color: rgb(134, 147, 110);
+  background-color: #b19989;
   width: 100%;
   padding: 5px;
   color: rgba(38, 21, 8, 0.952);
@@ -60,7 +60,7 @@ input {
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
-  background-image: url(./img/butterfly.avif);
+  background-image: url(https://png.pngtree.com/background/20220723/original/pngtree-cute-cat-face-seamless-pattern-picture-image_1738391.jpg);
 }
 
 .authGroups {
@@ -70,7 +70,7 @@ input {
   align-content: center;
   width: 100%;
   height: 80vh;
-  background-image: url(./img/butterfly.avif);
+  background-image: url(https://png.pngtree.com/background/20220723/original/pngtree-cute-cat-face-seamless-pattern-picture-image_1738391.jpg);
 }
 
 .product_card {
@@ -88,7 +88,7 @@ input {
   border-radius: 15px;
   background-color: rgba(38, 21, 8, 0.952);
   width: 100%;
-  height: 50vh;
+  /* height: 50vh; */
   padding: 15px;
   margin: 3%;
   font-weight: medium;
@@ -121,7 +121,7 @@ input {
 }
 
 .sp_review_card_comments {
-  border: 1px solid aliceblue;
+  /* border: 1px solid aliceblue; */
   border-radius: 15px;
   background-color: rgba(38, 21, 8, 0.952);
   width: 90%;
@@ -129,6 +129,7 @@ input {
   margin: 0.5% 3%;
   font-weight: medium;
   font-size: 1.2rem;
+  text-align: left;
 }
 .review_card {
   border: 1px solid aliceblue;
@@ -167,6 +168,12 @@ input {
   font-size: 1.5em;
   margin-left: 100px;
 }
+
+.auth_card__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .auth_card input {
   width: 60%;
   margin: 20px 100px 15px 100px;
@@ -174,8 +181,6 @@ input {
 
 .auth_card button {
   font-size: 0.8em;
-  width: 25%;
-  margin-left: 10px;
 }
 
 input[type="radio"] {
