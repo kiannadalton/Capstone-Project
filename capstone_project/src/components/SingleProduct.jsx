@@ -53,6 +53,7 @@ function SingleProduct({ token }) {
       <div className="allGroups">
         <div className="single_product_card">
           <h3> Meet {product.name}! </h3>
+          <img src={product.img_url} alt={product.name} />
           <p>Average Rating: {average.toFixed(1)} </p>
           <p>{product.description}</p>
           {/* <button onClick={() => navigate("/reviews/reviewform")}>
