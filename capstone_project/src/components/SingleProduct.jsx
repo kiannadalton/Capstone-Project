@@ -71,15 +71,17 @@ function SingleProduct({ token }) {
           {product.reviews &&
             product.reviews.map((review) => (
               <div className="sp_review_card" key={review.id}>
-                <p>Rating: {review.score.toFixed(1)} Stars</p>
-                <p>Review: {review.txt}</p>
+                <p>Valued Cat-stomer</p>
+                <p>Rating: {review.score.toFixed(0)} Stars</p>
+                <p>Review: </p>
+                <p>{review.txt}</p>
                 <button
                   onClick={() => navigate(`/comments/review/${review.id}`)}
                 >
                   Add Comment
                 </button>
                 {/* adding comments to reviews */}
-                <h3>Comments:</h3>
+                <h4>Comments:</h4>
                 <div>
                   {review.comments &&
                     review.comments.map((comment) => (
@@ -118,10 +120,12 @@ function SingleProduct({ token }) {
         {product.reviews &&
           product.reviews.map((review) => (
             <div className="sp_review_card" key={review.id}>
-              <p>Rating: {review.score.toFixed(1)} Stars</p>
-              <p>Review: {review.txt}</p>
+              <p>Valued Cat-stomer</p>
+              <p>Rating: {review.score.toFixed(0)} Stars</p>
+              <p>Review: </p>
+              <p>{review.txt}</p>
               {/* adding comments to reviews */}
-              <h3>Comments:</h3>
+              <h4>Comments:</h4>
               <div>
                 {review.comments &&
                   review.comments.map((comment) => (
