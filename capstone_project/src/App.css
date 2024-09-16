@@ -30,12 +30,27 @@ nav > a:hover {
 
 img {
   width: 40%;
+    border-radius: 15px;
+
 }
 
 .homepage {
   padding-top: 15px;
   margin: 0 auto;
   width: 60%;
+  text-align: justify;
+  padding-bottom: 50px;
+  font-size: 1.6rem;
+}
+
+.homepage_img {
+  width: 60%;
+}
+
+.homepage_section {
+  border: 5px white;
+  background-color: rgba(38, 21, 8, 0.952);
+  margin: 0rem 15rem;
 }
 
 .searchBar {
@@ -61,6 +76,7 @@ input {
   justify-content: space-evenly;
   width: 100%;
   background-image: url(https://png.pngtree.com/background/20220723/original/pngtree-cute-cat-face-seamless-pattern-picture-image_1738391.jpg);
+  padding-bottom: 50px;
 }
 
 .authGroups {
@@ -71,6 +87,7 @@ input {
   width: 100%;
   height: 80vh;
   background-image: url(https://png.pngtree.com/background/20220723/original/pngtree-cute-cat-face-seamless-pattern-picture-image_1738391.jpg);
+  padding-bottom: 75px;
 }
 
 .product_card {
@@ -83,6 +100,9 @@ input {
   font-weight: medium;
 }
 
+.products_img {
+  width: 70%;
+}
 .single_product_card {
   border: 1px solid aliceblue;
   border-radius: 15px;
@@ -156,9 +176,8 @@ input {
   border: 1px solid aliceblue;
   border-radius: 15px;
   background-color: rgba(38, 21, 8, 0.952);
-  width: 60%;
-  height: 50vh;
-  padding: 15px;
+  flex: 0 0 60%;
+  padding: 20px;
   justify-content: center;
   margin: 3%;
   font-weight: bold;
@@ -173,10 +192,11 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15px 0px;
 }
 .auth_card input {
-  width: 60%;
-  margin: 20px 100px 15px 100px;
+  width: 100%;
+  /* margin: 20px 100px 15px 100px; */
 }
 
 .auth_card button {

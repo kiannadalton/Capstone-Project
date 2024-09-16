@@ -54,7 +54,7 @@ function Products() {
         {productsToDisplay &&
           productsToDisplay.map((products) => (
             <div className="product_card" key={products.id}>
-              <img src={products.img_url} alt={products.name} />
+              <img className="products_img" src={products.img_url} alt={products.name} />
               <p>Name: {products.name}</p>
               <p>
                 {(
