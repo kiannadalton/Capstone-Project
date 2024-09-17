@@ -2,16 +2,16 @@ Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
 Backend Deployed link: https://lunarloomsbackend.onrender.com
 
 In order to access the completed webite, please navigate to the below link:
-https://lunarlooms.netlify.app/
+
+https://thecozycatcollective.netlify.app/
 
 Below are additional links you can utilize to observe the backend:
-    Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
-    Backend Deployed link: https://lunarloomsbackend.onrender.com   
-
+Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
+Backend Deployed link: https://lunarloomsbackend.onrender.com
 
 Overview of capabilities:
 
-*AS A USER (NOT LOGGED IN), I CAN*
+_AS A USER (NOT LOGGED IN), I CAN_
 Access the website via the Internet so I can browse and read reviews.
 
 View details for a specific reviewed item (store, restaurant, product, book, etc.)
@@ -26,28 +26,26 @@ Sign up for an account so I can have a logged-in experience.
 
 Log in to the site if I already have an account.
 
-
-*AS A LOGGED-IN USER, I CAN:*
+_AS A LOGGED-IN USER, I CAN:_
 
 Write and submit a review for an item that includes:
-    A written text review
-    A score/rating
+A written text review
+A score/rating
 
 Only one review should be allowed per item, per user
 View a list of all reviews I have written.
 
 Delete reviews I have written.
-    
+
 Edit reviews I have written.
-    Change the text review.
-    Modify the score/rating.
-    
+Change the text review.
+Modify the score/rating.
+
 Write comments on reviews written by others.
-    
+
 View a list of all comments I have written.
-    
+
 Edit and delete my comments.
- 
 
 # React + Vite
 
