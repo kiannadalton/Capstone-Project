@@ -153,12 +153,12 @@ function SingleProduct({ token }) {
               <p>Rating: {review.score.toFixed(0)} Stars</p>
               <p>Review: </p>
               <p>{review.txt}</p>
-              <button onClick={() => navigate("/login")}>
-                Log In to Comment
-              </button>
               {/* adding comments to reviews */}
               <h4>Comments:</h4>
               <div>
+                <button onClick={() => navigate("/login")}>
+                  Log In to Comment
+                </button>
                 {review.comments &&
                   review.comments.map((comment) => (
                     <div className="sp_review_card_comments" key={comment.id}>
