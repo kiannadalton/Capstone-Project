@@ -157,7 +157,7 @@ function SingleProduct({ token }) {
               <h4>Comments:</h4>
               <div>
                 <button onClick={() => navigate("/login")}>
-                  Log In to Comment
+                  Log In to Add a Comment
                 </button>
                 {review.comments &&
                   review.comments.map((comment) => (
