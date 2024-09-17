@@ -23,31 +23,34 @@ function MyReviews({ token }) {
     <div>
       <h2>My Reviews</h2>
 
-      {isLoading ? <p>Loading...</p> : <span />}
-      {error ? <p>Oops! Something went wrong.</p> : <span />}
-
       <div className="allGroups">
-        {reviews &&
-          reviews.map((review) => (
-            <div className="review_card" key={review.id}>
-              <p>Score: {review.score}</p>
-              <p>Review: {review.txt}</p>
-              <button
-                onClick={() =>
-                  navigate(`/reviews/${review.id}`, { state: { review } })
-                }
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => {
-                  removeReview(review.id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+        {isLoading ? <p>Loading...</p> : <span />}
+        {error ? <p>Oops! Something went wrong.</p> : <span />}
+
+        <div className="myItemsContainer">
+          {reviews &&
+            reviews.map((review) => (
+              <div className="review_card" key={review.id}>
+                <p>Score: {review.score} Stars</p>
+                <p>Review: </p>
+                <p>{review.txt}</p>
+                <button
+                  onClick={() =>
+                    navigate(`/reviews/${review.id}`, { state: { review } })
+                  }
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => {
+                    removeReview(review.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );

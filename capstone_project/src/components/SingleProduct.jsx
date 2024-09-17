@@ -52,16 +52,29 @@ function SingleProduct({ token }) {
     return (
       <div className="allGroups">
         <div className="single_product_card">
-          <h3> Meet {product.name}! </h3>
           <img src={product.img_url} alt={product.name} />
-          <p>Average Rating: {average.toFixed(1)} </p>
-          <p>{product.description}</p>
-          {/* <button onClick={() => navigate("/reviews/reviewform")}>
-          Write a Review
-        </button> */}
-          <button onClick={() => navigate(`/items/${product.id}/review`)}>
-            Write a Review
-          </button>
+          <div>
+            <h3> Meet {product.name}! </h3>
+            <p>Average Rating: {average.toFixed(1)} </p>
+            <p>{product.name} Bio:</p>
+            <p>{product.description}</p>
+            <p>Overview of Cat Rental Service:</p>
+            <p>
+              Our rental cats offer a blend of companionship, calmness, and
+              professionalism. They are well-groomed, clean, and arrive on time,
+              ready to enhance your day with their soothing presence. Whether
+              you need a quiet companion for relaxation or a playful friend to
+              lift your spirits, our cats are trained to adapt to your needs.
+              You can expect them to bring a sense of comfort and joy to your
+              home while revitalizing your mood. Each rental cat provides an
+              uplifting and refreshing experience, making them the perfect
+              temporary companion.
+            </p>
+
+            <button onClick={() => navigate(`/items/${product.id}/review`)}>
+              Write a Review
+            </button>
+          </div>
         </div>
 
         <div className="sp_review_card">
@@ -104,13 +117,28 @@ function SingleProduct({ token }) {
   return (
     <div className="allGroups">
       <div className="single_product_card">
-        <h3> Meet {product.name}!</h3>
         <img src={product.img_url} alt={product.name} />
-        <p>Average Rating: {average.toFixed(1)} Stars</p>
-        <p>{product.description}</p>
-        <button onClick={() => navigate("/login")}>
-          Log In to Write a Review
-        </button>
+        <div>
+          <h3> Meet {product.name}! </h3>
+          <p>Average Rating: {average.toFixed(1)} </p>
+          <p>{product.name} Bio:</p>
+          <p>{product.description}</p>
+          <p>Overview of Cat Rental Service:</p>
+          <p>
+            Our rental cats offer a blend of companionship, calmness, and
+            professionalism. They are well-groomed, clean, and arrive on time,
+            ready to enhance your day with their soothing presence. Whether you
+            need a quiet companion for relaxation or a playful friend to lift
+            your spirits, our cats are trained to adapt to your needs. You can
+            expect them to bring a sense of comfort and joy to your home while
+            revitalizing your mood. Each rental cat provides an uplifting and
+            refreshing experience, making them the perfect temporary companion.
+          </p>
+
+          <button onClick={() => navigate("/login")}>
+            Log In to Write a Review
+          </button>
+        </div>
       </div>
 
       <div className="sp_review_card">
@@ -125,6 +153,9 @@ function SingleProduct({ token }) {
               <p>Rating: {review.score.toFixed(0)} Stars</p>
               <p>Review: </p>
               <p>{review.txt}</p>
+              <button onClick={() => navigate("/login")}>
+                Log In to Comment
+              </button>
               {/* adding comments to reviews */}
               <h4>Comments:</h4>
               <div>

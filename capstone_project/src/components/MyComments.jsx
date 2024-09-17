@@ -23,29 +23,32 @@ function MyComments({ token }) {
     <div>
       <h2>My Comments</h2>
 
-      {isLoading ? <p>Loading...</p> : <span />}
-      {error ? <p>Oops! Something went wrong.</p> : <span />}
       <div className="allGroups">
-        {comments &&
-          comments.map((comment) => (
-            <div className="comment_card" key={comment.id}>
-              <p>Posted Comment: {comment.comment}</p>
-              <button
-                onClick={() =>
-                  navigate(`/comments/${comment.id}`, { state: { comment } })
-                }
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => {
-                  removeComment(comment.id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          ))}
+        {isLoading ? <p>Loading...</p> : <span />}
+        {error ? <p>Oops! Something went wrong.</p> : <span />}
+        <div className="myItemsContainer">
+          {comments &&
+            comments.map((comment) => (
+              <div className="comment_card" key={comment.id}>
+                <p>Posted Comment: </p>
+                <p>{comment.comment}</p>
+                <button
+                  onClick={() =>
+                    navigate(`/comments/${comment.id}`, { state: { comment } })
+                  }
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => {
+                    removeComment(comment.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
