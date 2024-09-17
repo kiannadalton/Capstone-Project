@@ -65,6 +65,24 @@ input {
   font-size: 1.1rem;
 }
 
+textarea {
+  width: 60%;
+  height: 200px;
+  margin: 10px 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  font-family: inherit;
+}
+
+.comment_textarea {
+  width: 60%;
+  height: 100px;
+  margin: 10px 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  font-family: inherit;
+}
+
 .allGroups {
   display: flex;
   flex-wrap: wrap;

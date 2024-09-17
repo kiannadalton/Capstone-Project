@@ -59,9 +59,10 @@ function ReviewForm({ token }) {
 
         <label>
           Add a Written Review:
-          <input name="txt" value={txt} onChange={handleChange} />
+          <br></br>
+          <textarea name="txt" value={txt} onChange={handleChange} />
         </label>
-
+        <br></br>
         <button onClick={handleSubmit}>Submit</button>
       </form>
     </div>

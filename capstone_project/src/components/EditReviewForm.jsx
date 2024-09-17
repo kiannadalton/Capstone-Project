@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useUpdateReviewMutation } from "../redux/api";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
@@ -9,12 +8,12 @@ function EditReviewForm({ token }) {
 
   const location = useLocation();
 
-//   imports info from selected edit review on My Reviews page
+  //   imports info from selected edit review on My Reviews page
   const editingReview = location.state.review;
 
   const initialForm = {
     txt: editingReview?.txt,
-    score: editingReview?.score
+    score: editingReview?.score,
   };
 
   const [form, updateForm] = useState(initialForm);
@@ -61,12 +60,20 @@ function EditReviewForm({ token }) {
           Overall Rating:
           <StarRating setScore={setScore} />
         </label>
-        <p>Your original rating was: <br></br>
-            {editingReview.score} / 5</p>
+        <p>
+          Your original rating was: <br></br>
+          {editingReview.score} / 5
+        </p>
         <label>
-          Edit Written Review:
-          <input name="txt" value={txt} onChange={handleChange} />
+          Edit Review:
+          <br></br>
+          <textarea
+            name="txt"
+            value={txt}
+            onChange={handleChange}
+          />
         </label>
+        <br></br>
 
         <button onClick={handleSubmit}>Update Review</button>
       </form>

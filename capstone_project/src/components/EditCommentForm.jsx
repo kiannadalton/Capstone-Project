@@ -56,10 +56,11 @@ function EditCommentForm({ token }) {
 
       <form>
         <label>
-          Edit Comment
-          <input name="comment" value={comment} onChange={handleChange} />
+          Edit Comment:
+          <br></br>
+          <textarea className="comment_textarea" name="comment" value={comment} onChange={handleChange} />
         </label>
-
+        <br></br>
         <button onClick={handleSubmit}>
           Update Comment
         </button>

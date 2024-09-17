@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useCreateCommentMutation } from "../redux/api";
-import {  useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function CommentForm({ token }) {
   const { review_id } = useParams();
   const initialForm = {
-    comment: ""
+    comment: "",
   };
 
   const [form, updateForm] = useState(initialForm);
@@ -18,7 +18,7 @@ function CommentForm({ token }) {
   const { comment } = form;
 
   const handleChange = ({ target }) => {
-    updateForm({ ...form, [target.name]: target.value })
+    updateForm({ ...form, [target.name]: target.value });
   };
 
   const handleSubmit = async (evt) => {
@@ -33,15 +33,13 @@ function CommentForm({ token }) {
       review_id,
       token,
       body: form,
-    })
-    ;
-
+    });
     if (error) {
       setError("Something went wrong. Please try again!");
       return;
     }
 
-    navigate("/items")
+    navigate("/items");
   };
 
   return (
@@ -52,9 +50,15 @@ function CommentForm({ token }) {
       <form>
         <label>
           Add a Comment:
-          <input name="comment" value={comment} onChange={handleChange} />
+          <br></br>
+          <textarea
+            className="comment_textarea"
+            name="comment"
+            value={comment}
+            onChange={handleChange}
+          />
         </label>
-
+        <br></br>
         <button onClick={handleSubmit}>Submit</button>
       </form>
     </div>
