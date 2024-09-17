@@ -64,8 +64,6 @@ function Products() {
                 ).toFixed(1)}{" "}
                 Stars
               </p>
-              {console.log("product", products)}
-
               <button onClick={() => navigate(`/items/${products.id}`)}>
                 See Details
               </button>
