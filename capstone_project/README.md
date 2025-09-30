@@ -3,7 +3,7 @@ Backend Deployed link: https://cozy-cat-collective.onrender.com
 
 In order to access the completed webite, please navigate to the below link:
 
-https://thecozycatcollective.netlify.app/
+https://cozycatcollective.netlify.app/
 
 Overview of capabilities:
 
