@@ -1,13 +1,9 @@
 Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
-Backend Deployed link: https://lunarloomsbackend.onrender.com
+Backend Deployed link: https://cozy-cat-collective.onrender.com
 
 In order to access the completed webite, please navigate to the below link:
 
 https://thecozycatcollective.netlify.app/
-
-Below are additional links you can utilize to observe the backend:
-Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
-Backend Deployed link: https://lunarloomsbackend.onrender.com
 
 Overview of capabilities:
 

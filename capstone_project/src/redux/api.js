@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const capstone_api = createApi({
   reducerPath: "capstone_api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://lunarloomsbackend.onrender.com",
+    baseUrl: "https://cozy-cat-collective.onrender.com",
   }),
   tagTypes: ["user", "comment", "reviews"],
   endpoints: (builder) => ({
