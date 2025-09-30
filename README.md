@@ -1,7 +1,12 @@
 # Capstone-Project
 
+Completed link to working website: https://cozycatcollective.netlify.app/
+
+Backend Repo: https://github.com/kiannadalton/Block37_CareerSimulation
+Backend Deployed link: https://cozy-cat-collective.onrender.com
+
 Tier 1: MVP (Minimum Viable Product)
-Create a GitHub repository. Start from scratch or use the template provided by your instructor. 
+Create a GitHub repository. Start from scratch or use the template provided by your instructor.
 
 AS A USER (NOT LOGGED IN), I SHOULD BE ABLE TO:
 Access the website via the Internet so I can browse and read reviews.
@@ -30,7 +35,6 @@ By doing this, you set yourselves up to tackle many of the points throughout the
 For example, seed hundreds of items and reviews with dummy data so that when you get to the “pagination” user story, you won’t have to worry about adding more.
 Also, add a bunch of users with reviews so the review editing features can be worked on without already having the “write a review” functionality built.
 Have secured user data so that no one can unrightfully manipulate information.
-
 
 TIER 2: Review Site Essentials
 AS A USER (NOT LOGGED IN), I SHOULD BE ABLE TO:
@@ -91,8 +95,6 @@ Users:
 Set other users as administrators.
 Edit user information.
 Remove users.
-
-
 
 TIER 3: Extra Features
 AS A LOGGED-IN USER, I SHOULD BE ABLE TO:
